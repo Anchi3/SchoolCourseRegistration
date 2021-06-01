@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SchoolCourseRegistration.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        background-color: lavenderblush;
+        font-weight: 800;
+    }
+
+    div {
+        font-weight: 800;
+    }
+</style>
+
+<h1>Instructors</h1>
+
+<p>
+    <a asp-action="Create">Add New Instructor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Email
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

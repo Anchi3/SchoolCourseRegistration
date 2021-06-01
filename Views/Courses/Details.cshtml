@@ -1,0 +1,57 @@
+﻿@model SchoolCourseRegistration.ViewModel.CourseViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    body {
+        background-color: lavenderblush;
+        font-weight: 800;
+    }
+
+    div {
+        font-weight: 800;
+    }
+</style>
+
+
+<h1>Course Details</h1>
+
+<div>
+    <h4> @Model.Course.CourseName</h4>
+
+    <hr />
+
+    <dl class="row">
+       
+        <dt class="col-sm-2">
+            Course Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Course.CourseName
+        </dd>
+        <dt class="col-sm-2">
+            Course Number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Course.CourseNumber
+        </dd>
+        <dt class="col-sm-2">
+            Course Description
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Course.Description
+        </dd>
+        <dt class="col-sm-2">
+            Course Credits
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Course.Credits
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Course.Id">Update</a> |
+    <a asp-action="Index">Back to Courses</a>
+</div>

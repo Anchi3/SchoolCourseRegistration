@@ -1,0 +1,103 @@
+﻿@model IEnumerable<SchoolCourseRegistration.Models.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body {
+        background-color: lavenderblush;
+        font-weight: 800;
+    }
+
+    div {
+        font-weight: 800;
+    }
+</style>
+
+<h1>Courses</h1>
+
+<p>
+    <a asp-action="Create">Add New Course</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseNumber)
+            </td>
+            <td>
+                <a data-toggle="modal" href="#myModal">@Html.DisplayFor(modelItem => item.CourseName)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Update</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+    
+</table>
+
+<var>Click On the Course to View Students Enrolled</var>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Available Courses</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>CourseId</th>
+                            <th>Course Number</th>
+                            <th>Course Name</th>
+                            <th>Description</th>
+                            <th>Credits</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td>@item.CourseNumber</td>
+                            <td>@item.CourseName</td>
+                            <td>@item.Description</td>
+                            <td>@item.Credits</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
